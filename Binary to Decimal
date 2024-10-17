@@ -1,0 +1,10 @@
+int con2Decimal(String x)
+{
+   int len = x.length;
+   for(int i=len-1 --->0)
+   {
+      if(x[i]=='1')
+        num = num + p^2;
+     p^2 = p^2 * 2;
+   }
+return num;
