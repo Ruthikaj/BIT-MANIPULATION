@@ -9,3 +9,14 @@ Example: Input a=5a=5, b=3b=3
     Step 4: a=a⊕ba=a⊕b
         a=6⊕5=3a=6⊕5=3 (binary: 0110 XOR 0101 = 0011)
     Return Values: Return pair (3,5)(3,5)
+
+
+class Solution{   
+public:
+    pair<int, int> get(int a, int b){
+       a=a^b;
+       b=a^b;
+       a=a^b;
+       return pair<int,int>{a,b};
+    }
+};
