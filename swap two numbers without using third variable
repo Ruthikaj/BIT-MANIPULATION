@@ -1,0 +1,11 @@
+Example Walkthrough
+Example: Input a=5a=5, b=3b=3
+
+    Input: a=5a=5, b=3b=3
+    Step 2: a=a⊕ba=a⊕b
+        a=5⊕3=6a=5⊕3=6 (binary: 0101 XOR 0011 = 0110)
+    Step 3: b=a⊕bb=a⊕b
+        b=6⊕3=5b=6⊕3=5 (binary: 0110 XOR 0011 = 0101)
+    Step 4: a=a⊕ba=a⊕b
+        a=6⊕5=3a=6⊕5=3 (binary: 0110 XOR 0101 = 0011)
+    Return Values: Return pair (3,5)(3,5)
