@@ -19,3 +19,134 @@ public:
         
     }
 };
+
+
+Sure! Let’s dry-run the code step by step with the example `nums = {1, 2, 3}` to help you understand how the subsets are generated.
+
+### Example: `nums = {1, 2, 3}`
+
+1. **Initialization**:
+   - `nums = {1, 2, 3}`
+   - `n = nums.size() = 3` (since there are 3 elements in `nums`)
+   - `ans = {}` (This is an empty 2D vector that will store all the subsets)
+
+2. **Outer Loop (`for subset_num = 0 to (1 << n) - 1`)**:
+   - We iterate over all numbers from `0` to `2^n - 1`. In this case, `2^n = 8`, so we loop from `0` to `7` (since `1 << n = 8`).
+   
+   Each number (`subset_num`) represents a possible subset of the elements in `nums` using its binary representation. Let's go through each iteration.
+
+---
+
+### Iteration 1: `subset_num = 0` (Binary: `000`)
+
+- **Initialize**: `subset = {}` (Empty subset to start with)
+- **Inner Loop (`for i = 0 to n-1`)**:
+  - **i = 0**: Check if the 0th bit is `1`. Since `subset_num & (1 << 0)` is `0`, nothing is added.
+  - **i = 1**: Check if the 1st bit is `1`. Since `subset_num & (1 << 1)` is `0`, nothing is added.
+  - **i = 2**: Check if the 2nd bit is `1`. Since `subset_num & (1 << 2)` is `0`, nothing is added.
+  
+- **End of Inner Loop**: The subset is still `{}` (empty).
+- **Update ans**: `ans = { { } }` (Add this subset to the result).
+
+---
+
+### Iteration 2: `subset_num = 1` (Binary: `001`)
+
+- **Initialize**: `subset = {}` (Empty subset to start with)
+- **Inner Loop**:
+  - **i = 0**: Check if the 0th bit is `1`. Since `subset_num & (1 << 0)` is `1`, add `nums[0] = 1` to `subset`.
+  - **i = 1**: Check if the 1st bit is `1`. Since `subset_num & (1 << 1)` is `0`, nothing is added.
+  - **i = 2**: Check if the 2nd bit is `1`. Since `subset_num & (1 << 2)` is `0`, nothing is added.
+
+- **End of Inner Loop**: The subset becomes `{1}`.
+- **Update ans**: `ans = { { }, {1} }` (Add this subset to the result).
+
+---
+
+### Iteration 3: `subset_num = 2` (Binary: `010`)
+
+- **Initialize**: `subset = {}` (Empty subset to start with)
+- **Inner Loop**:
+  - **i = 0**: Check if the 0th bit is `1`. Since `subset_num & (1 << 0)` is `0`, nothing is added.
+  - **i = 1**: Check if the 1st bit is `1`. Since `subset_num & (1 << 1)` is `1`, add `nums[1] = 2` to `subset`.
+  - **i = 2**: Check if the 2nd bit is `1`. Since `subset_num & (1 << 2)` is `0`, nothing is added.
+
+- **End of Inner Loop**: The subset becomes `{2}`.
+- **Update ans**: `ans = { { }, {1}, {2} }` (Add this subset to the result).
+
+---
+
+### Iteration 4: `subset_num = 3` (Binary: `011`)
+
+- **Initialize**: `subset = {}` (Empty subset to start with)
+- **Inner Loop**:
+  - **i = 0**: Check if the 0th bit is `1`. Since `subset_num & (1 << 0)` is `1`, add `nums[0] = 1` to `subset`.
+  - **i = 1**: Check if the 1st bit is `1`. Since `subset_num & (1 << 1)` is `1`, add `nums[1] = 2` to `subset`.
+  - **i = 2**: Check if the 2nd bit is `1`. Since `subset_num & (1 << 2)` is `0`, nothing is added.
+
+- **End of Inner Loop**: The subset becomes `{1, 2}`.
+- **Update ans**: `ans = { { }, {1}, {2}, {1, 2} }` (Add this subset to the result).
+
+---
+
+### Iteration 5: `subset_num = 4` (Binary: `100`)
+
+- **Initialize**: `subset = {}` (Empty subset to start with)
+- **Inner Loop**:
+  - **i = 0**: Check if the 0th bit is `1`. Since `subset_num & (1 << 0)` is `0`, nothing is added.
+  - **i = 1**: Check if the 1st bit is `1`. Since `subset_num & (1 << 1)` is `0`, nothing is added.
+  - **i = 2**: Check if the 2nd bit is `1`. Since `subset_num & (1 << 2)` is `1`, add `nums[2] = 3` to `subset`.
+
+- **End of Inner Loop**: The subset becomes `{3}`.
+- **Update ans**: `ans = { { }, {1}, {2}, {1, 2}, {3} }` (Add this subset to the result).
+
+---
+
+### Iteration 6: `subset_num = 5` (Binary: `101`)
+
+- **Initialize**: `subset = {}` (Empty subset to start with)
+- **Inner Loop**:
+  - **i = 0**: Check if the 0th bit is `1`. Since `subset_num & (1 << 0)` is `1`, add `nums[0] = 1` to `subset`.
+  - **i = 1**: Check if the 1st bit is `1`. Since `subset_num & (1 << 1)` is `0`, nothing is added.
+  - **i = 2**: Check if the 2nd bit is `1`. Since `subset_num & (1 << 2)` is `1`, add `nums[2] = 3` to `subset`.
+
+- **End of Inner Loop**: The subset becomes `{1, 3}`.
+- **Update ans**: `ans = { { }, {1}, {2}, {1, 2}, {3}, {1, 3} }` (Add this subset to the result).
+
+---
+
+### Iteration 7: `subset_num = 6` (Binary: `110`)
+
+- **Initialize**: `subset = {}` (Empty subset to start with)
+- **Inner Loop**:
+  - **i = 0**: Check if the 0th bit is `1`. Since `subset_num & (1 << 0)` is `0`, nothing is added.
+  - **i = 1**: Check if the 1st bit is `1`. Since `subset_num & (1 << 1)` is `1`, add `nums[1] = 2` to `subset`.
+  - **i = 2**: Check if the 2nd bit is `1`. Since `subset_num & (1 << 2)` is `1`, add `nums[2] = 3` to `subset`.
+
+- **End of Inner Loop**: The subset becomes `{2, 3}`.
+- **Update ans**: `ans = { { }, {1}, {2}, {1, 2}, {3}, {1, 3}, {2, 3} }` (Add this subset to the result).
+
+---
+
+### Iteration 8: `subset_num = 7` (Binary: `111`)
+
+- **Initialize**: `subset = {}` (Empty subset to start with)
+- **Inner Loop**:
+  - **i = 0**: Check if the 0th bit is `1`. Since `subset_num & (1 << 0)` is `1`, add `nums[0] = 1` to `subset`.
+  - **i = 1**: Check if the 1st bit is `1`. Since `subset_num & (1 << 1)` is `1`, add `nums[1] = 2` to `subset`.
+  - **i = 2**: Check if the 2nd bit is `1`. Since `subset_num & (1 << 2)` is `1`, add `nums[2] = 3` to `subset`.
+
+- **End of Inner Loop**: The subset becomes `{1, 2, 3}`.
+- **Update ans**: `ans = { { }, {1}, {2}, {1, 2}, {3
+
+}, {1, 3}, {2, 3}, {1, 2, 3} }` (Add this subset to the result).
+
+---
+
+### Final Result:
+The result contains all possible subsets of `nums = {1, 2, 3}`:
+```
+ans = { { }, {1}, {2}, {1, 2}, {3}, {1, 3}, {2, 3}, {1, 2, 3} }
+```
+
+This dry-run shows how the code generates subsets by checking the binary representation of each `subset_num` and using bitwise operations to decide which elements to include in each subset.
